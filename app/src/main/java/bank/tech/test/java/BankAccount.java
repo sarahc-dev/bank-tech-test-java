@@ -13,7 +13,11 @@ public class BankAccount {
         return balance;
     }
 
-    public void deposit(int amount, LocalDate date) {
+    public void deposit(double amount, LocalDate date) {
         balance += amount;
+    }
+
+    public void withdraw(double amount, LocalDate date) {
+        balance -= amount;
     }
 }
