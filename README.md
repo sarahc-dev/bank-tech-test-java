@@ -56,3 +56,18 @@ date || credit || debit || balance
 13/01/2023 || 2000.00 || || 3000.00
 10/01/2023 || 1000.00 || || 1000.00
 ```
+
+## Process
+
+I initially created the BankAccount class with deposit and withdrawal functionality. I then considered how I was going to 
+proceed in 'saving' the transactions.
+
+I have chosen to create separate TransactionList and PrintStatement classes. A class should do one thing, and therefore
+it should only have a single reason to change. So following the single responsibility principle, I am separating the
+persistence logic (here I am keeping the data in memory, but this could in future deal with a database). I am also
+separating the printing logic that deals with formatting the bank statement. This way, in the future if I want to change
+where data is saved or how it is printed, I only need to change the one class.
+
+I also realised that in Java I can't simply create a 'transaction' object with multiple keys and value types to add to 
+an array as I may have in JavaScript. So I am going to create a Transaction class as well to assign these attributes. I 
+like that I am almost guided to this decision by the constructs of the language.
