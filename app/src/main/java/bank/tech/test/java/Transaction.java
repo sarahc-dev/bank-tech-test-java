@@ -2,7 +2,7 @@ package bank.tech.test.java;
 
 import java.time.LocalDate;
 
-public class Transaction {
+public class Transaction implements ITransaction {
     private final double amount;
     private final TransactionType type;
     private final LocalDate date;
