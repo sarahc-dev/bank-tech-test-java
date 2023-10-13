@@ -4,11 +4,17 @@
 package bank.tech.test.java;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.Assert;
+
+import java.time.LocalDate;
 
 public class AppTest {
-    @Test public void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull("app should have a greeting", classUnderTest.getGreeting());
-    }
+//    @Test public void makesADeposit() {
+//        // App classUnderTest = new App();
+//        BankAccount bankAccount = new BankAccount();
+//        bankAccount.deposit(1000, LocalDate.of(2023, 1, 10));
+//
+//        String statement = "date || credit || debit || balance\n10/01/2023 || 1000.00 || - || 1000.00";
+//        Assert.assertEquals(statement, bankAccount.generateStatement());
+//    }
 }
