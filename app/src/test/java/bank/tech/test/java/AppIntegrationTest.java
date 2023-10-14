@@ -10,11 +10,10 @@ import java.time.LocalDate;
 
 public class AppIntegrationTest {
     @Test public void generatesEmptyStatementIfNoTransactions() {
-//        BankAccount bankAccount = new BankAccount();
-//        bankAccount.deposit(1000, LocalDate.of(2023, 1, 10));
-//
-//        String statement = "date || credit || debit || balance";
-//        Assert.assertEquals(statement, bankAccount.generateStatement());
+        BankAccount bankAccount = new BankAccount();
+
+        String statement = "date || credit || debit || balance";
+        Assert.assertEquals(statement, bankAccount.generateStatement());
     }
 
     @Test public void generatesStatementWithSingleTransaction() {

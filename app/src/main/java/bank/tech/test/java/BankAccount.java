@@ -21,8 +21,8 @@ public class BankAccount {
         transactionList.add(newTransaction);
     }
 
-//    public string generateStatement() {
-//        Statement statement = new Statement(transactionList);
-//        return statement.generateStatement();
-//    }
+    public String generateStatement() {
+        PrintStatement statement = new PrintStatement(transactionList);
+        return statement.generate();
+    }
 }
