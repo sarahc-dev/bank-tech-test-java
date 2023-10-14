@@ -6,4 +6,6 @@ public interface ITransactionList {
     void add(ITransaction transaction);
 
     ArrayList<ITransaction> getTransactions();
+
+    double calculateBalance(int index);
 }

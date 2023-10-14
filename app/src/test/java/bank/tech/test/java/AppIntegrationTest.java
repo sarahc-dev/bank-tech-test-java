@@ -12,15 +12,25 @@ public class AppIntegrationTest {
     @Test public void generatesEmptyStatementIfNoTransactions() {
         BankAccount bankAccount = new BankAccount();
 
-        String statement = "date || credit || debit || balance";
+        String statement = "date || credit || debit || balance\n";
         Assert.assertEquals(statement, bankAccount.generateStatement());
     }
 
     @Test public void generatesStatementWithSingleTransaction() {
-//        BankAccount bankAccount = new BankAccount();
-//        bankAccount.deposit(1000, LocalDate.of(2023, 1, 10));
-//
-//        String statement = "date || credit || debit || balance\n10/01/2023 || 1000.00 || - || 1000.00";
-//        Assert.assertEquals(statement, bankAccount.generateStatement());
+        BankAccount bankAccount = new BankAccount();
+        bankAccount.deposit(1000, LocalDate.of(2023, 1, 10));
+
+        String statement = "date || credit || debit || balance\n10/01/2023 || 1000.00 || - || 1000.00\n";
+        Assert.assertEquals(statement, bankAccount.generateStatement());
+    }
+
+    @Test public void generatesStatementWithMultipleTransactions() {
+        BankAccount bankAccount = new BankAccount();
+        bankAccount.deposit(1000, LocalDate.of(2023, 1, 10));
+        bankAccount.deposit(2000, LocalDate.of(2023, 1, 13));
+        bankAccount.withdraw(500, LocalDate.of(2023, 1, 14));
+
+        String statement = "date || credit || debit || balance\n14/01/2023 || - || 500.00 || 2500.00\n13/01/2023 || 2000.00 || - || 3000.00\n10/01/2023 || 1000.00 || - || 1000.00\n";
+        Assert.assertEquals(statement, bankAccount.generateStatement());
     }
 }
