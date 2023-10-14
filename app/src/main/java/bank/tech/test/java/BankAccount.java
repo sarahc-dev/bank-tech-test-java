@@ -12,11 +12,19 @@ public class BankAccount {
     }
 
     public void deposit(double amount, LocalDate date) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be greater than 0");
+        }
+
         Transaction newTransaction = new Transaction(amount, TransactionType.CREDIT, date);
         transactionList.add(newTransaction);
     }
 
     public void withdraw(double amount, LocalDate date) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be greater than 0");
+        }
+
         Transaction newTransaction = new Transaction(amount, TransactionType.DEBIT, date);
         transactionList.add(newTransaction);
     }

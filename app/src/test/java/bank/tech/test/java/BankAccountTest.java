@@ -26,4 +26,36 @@ public class BankAccountTest {
         Assert.assertEquals(TransactionType.DEBIT, transactions.get(0).getType());
         Assert.assertEquals(LocalDate.of(2023, 1, 10), transactions.get(0).getDate());
     }
+
+    @Test
+    public void depositReturnsErrorWhenAmountZero() {
+        Assert.assertThrows(IllegalArgumentException.class, () -> {
+            BankAccount bankAccount = new BankAccount();
+            bankAccount.deposit(0, LocalDate.of(2023, 1, 10));
+        });
+    }
+
+    @Test
+    public void depositReturnsErrorWhenAmountNegative() {
+        Assert.assertThrows(IllegalArgumentException.class, () -> {
+            BankAccount bankAccount = new BankAccount();
+            bankAccount.deposit(-100, LocalDate.of(2023, 1, 10));
+        });
+    }
+
+    @Test
+    public void withdrawReturnsErrorWhenAmountZero() {
+        Assert.assertThrows(IllegalArgumentException.class, () -> {
+            BankAccount bankAccount = new BankAccount();
+            bankAccount.withdraw(0, LocalDate.of(2023, 1, 10));
+        });
+    }
+
+    @Test
+    public void withdrawReturnsErrorWhenAmountNegative() {
+        Assert.assertThrows(IllegalArgumentException.class, () -> {
+            BankAccount bankAccount = new BankAccount();
+            bankAccount.withdraw(-100, LocalDate.of(2023, 1, 10));
+        });
+    }
 }
