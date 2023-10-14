@@ -18,6 +18,16 @@ public class TransactionList implements ITransactionList {
     }
 
     public double calculateBalance(int index) {
-        return 100.0;
+        double balance = 0;
+
+        for (int i = 0; i <= index; i++) {
+            if (transactions.get(i).getType() == TransactionType.CREDIT) {
+                balance += transactions.get(i).getAmount();
+            } else {
+                balance -= transactions.get(i).getAmount();
+            }
+        }
+
+        return balance;
     }
 }
