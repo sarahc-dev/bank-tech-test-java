@@ -30,6 +30,15 @@ public class TransactionListTest {
         Assert.assertEquals(100.0, transactionList.getTransactions().get(2).getAmount(), 0.01);
     }
 
+    @Test
+    public void calculatesBalanceAfterOneTransaction() {
+        TransactionList transactionList = new TransactionList();
+        MockTransaction mockTransaction = new MockTransaction();
+        transactionList.add(mockTransaction);
+
+        Assert.assertEquals(100.0, transactionList.calculateBalance(0), 0.01);
+    }
+
     private static class MockTransaction implements ITransaction {
         @Override
         public double getAmount() {

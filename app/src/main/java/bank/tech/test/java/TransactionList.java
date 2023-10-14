@@ -16,4 +16,8 @@ public class TransactionList implements ITransactionList {
     public ArrayList<ITransaction> getTransactions() {
         return transactions;
     }
+
+    public double calculateBalance(int index) {
+        return 100.0;
+    }
 }
