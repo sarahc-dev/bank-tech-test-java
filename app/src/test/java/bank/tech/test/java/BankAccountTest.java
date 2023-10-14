@@ -4,19 +4,26 @@ import org.junit.Test;
 import org.junit.Assert;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class BankAccountTest {
     @Test
-    public void makesADepositToBankAccount() {
+    public void makesADeposit() {
         BankAccount bankAccount = new BankAccount();
         bankAccount.deposit(1000, LocalDate.of(2023, 1, 10));
-        Assert.assertEquals(1000.00, bankAccount.getBalance(), 0.01);
+        ArrayList<ITransaction> transactions = bankAccount.getTransactionList().getTransactions();
+        Assert.assertEquals(1000.0, transactions.get(0).getAmount(), 0.01);
+        Assert.assertEquals(TransactionType.CREDIT, transactions.get(0).getType());
+        Assert.assertEquals(LocalDate.of(2023, 1, 10), transactions.get(0).getDate());
     }
 
     @Test
-    public void makesAWithdrawalFromBankAccount() {
+    public void makesAWithdrawal() {
         BankAccount bankAccount = new BankAccount();
-        bankAccount.withdraw(1000, LocalDate.of(2023, 1, 10));
-        Assert.assertEquals(-1000.00, bankAccount.getBalance(), 0.01);
+        bankAccount.withdraw(500, LocalDate.of(2023, 1, 10));
+        ArrayList<ITransaction> transactions = bankAccount.getTransactionList().getTransactions();
+        Assert.assertEquals(500.0, transactions.get(0).getAmount(), 0.01);
+        Assert.assertEquals(TransactionType.DEBIT, transactions.get(0).getType());
+        Assert.assertEquals(LocalDate.of(2023, 1, 10), transactions.get(0).getDate());
     }
 }

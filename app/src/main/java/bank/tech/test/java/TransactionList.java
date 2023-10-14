@@ -2,7 +2,7 @@ package bank.tech.test.java;
 
 import java.util.ArrayList;
 
-public class TransactionList {
+public class TransactionList implements ITransactionList {
     private final ArrayList<ITransaction> transactions;
 
     public TransactionList() {

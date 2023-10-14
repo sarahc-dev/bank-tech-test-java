@@ -3,21 +3,26 @@ package bank.tech.test.java;
 import java.time.LocalDate;
 
 public class BankAccount {
-    private double balance;
-
+    private final ITransactionList transactionList;
     public BankAccount() {
-        this.balance = 0;
+        this.transactionList = new TransactionList();
     }
-
-    public double getBalance() {
-        return balance;
+    public ITransactionList getTransactionList() {
+        return transactionList;
     }
 
     public void deposit(double amount, LocalDate date) {
-        balance += amount;
+        Transaction newTransaction = new Transaction(amount, TransactionType.CREDIT, date);
+        transactionList.add(newTransaction);
     }
 
     public void withdraw(double amount, LocalDate date) {
-        balance -= amount;
+        Transaction newTransaction = new Transaction(amount, TransactionType.DEBIT, date);
+        transactionList.add(newTransaction);
     }
+
+//    public string generateStatement() {
+//        Statement statement = new Statement(transactionList);
+//        return statement.generateStatement();
+//    }
 }

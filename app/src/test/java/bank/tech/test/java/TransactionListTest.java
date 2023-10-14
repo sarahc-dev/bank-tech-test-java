@@ -3,6 +3,8 @@ package bank.tech.test.java;
 import org.junit.Test;
 import org.junit.Assert;
 
+import java.time.LocalDate;
+
 public class TransactionListTest {
     @Test
     public void addsTransactionToTransactionList() {
@@ -11,6 +13,7 @@ public class TransactionListTest {
         transactionList.add(mockTransaction);
 
         Assert.assertEquals(1, transactionList.getTransactions().size());
+        Assert.assertEquals(100.0, transactionList.getTransactions().get(0).getAmount(), 0.01);
     }
 
     @Test
@@ -24,9 +27,25 @@ public class TransactionListTest {
         transactionList.add(mockTransaction3);
 
         Assert.assertEquals(3, transactionList.getTransactions().size());
+        Assert.assertEquals(100.0, transactionList.getTransactions().get(2).getAmount(), 0.01);
     }
 
-    private static class MockTransaction implements ITransaction {}
+    private static class MockTransaction implements ITransaction {
+        @Override
+        public double getAmount() {
+            return 100;
+        }
+
+        @Override
+        public TransactionType getType() {
+            return TransactionType.CREDIT;
+        }
+
+        @Override
+        public LocalDate getDate() {
+            return LocalDate.of(2023, 1,10);
+        }
+    }
 }
 
 

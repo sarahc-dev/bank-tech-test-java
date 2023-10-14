@@ -8,13 +8,20 @@ import org.junit.Assert;
 
 import java.time.LocalDate;
 
-public class AppTest {
-//    @Test public void makesADeposit() {
-//        // App classUnderTest = new App();
+public class AppIntegrationTest {
+    @Test public void generatesEmptyStatementIfNoTransactions() {
+//        BankAccount bankAccount = new BankAccount();
+//        bankAccount.deposit(1000, LocalDate.of(2023, 1, 10));
+//
+//        String statement = "date || credit || debit || balance";
+//        Assert.assertEquals(statement, bankAccount.generateStatement());
+    }
+
+    @Test public void generatesStatementWithSingleTransaction() {
 //        BankAccount bankAccount = new BankAccount();
 //        bankAccount.deposit(1000, LocalDate.of(2023, 1, 10));
 //
 //        String statement = "date || credit || debit || balance\n10/01/2023 || 1000.00 || - || 1000.00";
 //        Assert.assertEquals(statement, bankAccount.generateStatement());
-//    }
+    }
 }
